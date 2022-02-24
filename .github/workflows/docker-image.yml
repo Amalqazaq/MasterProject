@@ -7,15 +7,12 @@ on:
     branches: [ master ]
 
 jobs:
-
-  build:
-
-    runs-on:ubuntu-latest
-
+ build:
+    runs-on : ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    - name : Docker push
-    - run : docker push ${{secrets.Docker_User}}/master
+     - uses: actions/checkout@v2
+     - name: Build the Docker image
+       run: docker build . --file Dockerfile --tag latest
+     - name : Docker push
+       run : docker push ${{secrets.Docker_User}}/master
     
